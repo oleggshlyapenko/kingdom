@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Kingdom Adventure - 2D Pixel Platformer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Phaser 3 Framework (Local offline copy with CDN fallback) -->
+    <script src="phaser.min.js"></script>
+    <script>
+        if (typeof Phaser === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"><\/script>');
+        }
+    </script>
+</head>
+<body>
+    <div id="game-wrapper">
+        <header class="game-header">
+            <div class="game-title">👑 KINGDOM ADVENTURE</div>
+            <div class="game-meta">
+                <span>Уровень 1: Королевский рубеж</span>
+                <span>Фреймворк: Phaser 3</span>
+            </div>
+        </header>
+
+        <div id="canvas-container">
+            <!-- Phaser Canvas will be attached here -->
+
+            <!-- In-game Dialogue Modal for Cutscene -->
+            <div id="dialogue-modal">
+                <div class="dialogue-content">
+                    <canvas id="dialogue-avatar-canvas" class="dialogue-avatar" width="48" height="48"></canvas>
+                    <div class="dialogue-body">
+                        <div id="dialogue-speaker" class="dialogue-speaker">Артур</div>
+                        <div id="dialogue-text" class="dialogue-text">«Впусти меня в башню!»</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level Complete Climax Modal -->
+            <div id="level-complete-modal">
+                <h2 class="complete-title">🐉 УРОВЕНЬ 1 ПРОЙДЕН!</h2>
+                <div class="complete-story">
+                    «Принцессу похитили! Злобный Дракон унёс её на 10-й уровень в своё вулканическое логово. Отправляйся в поход через опасные земли, чтобы спасти её!»
+                </div>
+                <div class="complete-stats">
+                    <div>💀 Врагов: <span id="stat-enemies">0</span></div>
+                    <div>🪙 Монет: <span id="stat-coins">0</span></div>
+                    <div>🗝 Сундуков: <span id="stat-chests">0</span> / 4</div>
+                </div>
+                <div class="complete-buttons">
+                    <button id="btn-replay" class="pixel-btn">🔄 СЫГРАТЬ СНОВА</button>
+                    <button id="btn-next-level" class="pixel-btn secondary">⚔ НА 10-Й УРОВЕНЬ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Virtual Touch Controls for Smartphones & Tablets -->
+        <div id="virtual-controls">
+            <div class="touch-cluster">
+                <button id="btn-left" class="touch-btn" aria-label="Влево">◀</button>
+                <button id="btn-right" class="touch-btn" aria-label="Вправо">▶</button>
+            </div>
+            <div class="touch-cluster">
+                <button id="btn-interact" class="touch-btn btn-interact" aria-label="Сундук / Действие">✋ ЛУТ</button>
+                <button id="btn-weapon" class="touch-btn btn-weapon" aria-label="Сменить оружие">🔄 ОРУЖИЕ</button>
+                <button id="btn-attack" class="touch-btn btn-attack" aria-label="Атака">⚔ УДАР</button>
+                <button id="btn-jump" class="touch-btn btn-jump" aria-label="Прыжок">▲ ПРЫЖОК</button>
+            </div>
+        </div>
+
+        <div class="controls-hint">
+            <strong>🎮 Управление ПК:</strong> <span>A / D</span> — движение, <span>Space</span> / <span>W</span> — прыжок, <span>ЛКМ</span> — атака / выстрел, <span>Курсор мыши</span> — прицел, <span>Q</span> или <span>1, 2, 3</span> — смена оружия (Меч/Лук/Магия), <span>E</span> — открыть сундук.<br>
+            <strong>📱 Управление Смартфон:</strong> Виртуальные кнопки внизу экрана или <span>прямой тап по полю игры</span> (прыжок / удар).
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/textures.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
